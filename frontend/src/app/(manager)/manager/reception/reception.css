@@ -1,0 +1,273 @@
+
+.reception-page {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 35px 25px;
+  color: #172033;
+}
+
+.reception-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.reception-brand {
+  color: #6654c8;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+
+.reception-header h1 {
+  margin: 8px 0;
+  font-size: 30px;
+}
+
+.reception-header p {
+  color: #687386;
+}
+
+.reception-back {
+  padding: 11px 17px;
+  border-radius: 8px;
+  background: #eee8fa;
+  color: #6941b5;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.reception-stats {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.reception-stat-card,
+.reception-panel {
+  background: #fff;
+  border: 1px solid #e8eaf0;
+  border-radius: 12px;
+  padding: 22px;
+}
+
+.reception-stat-card span {
+  display: block;
+  color: #687386;
+  font-size: 13px;
+}
+
+.reception-stat-card strong {
+  display: block;
+  margin-top: 12px;
+  font-size: 27px;
+  color: #6654c8;
+}
+
+.reception-panel {
+  margin-bottom: 25px;
+}
+
+.reception-panel h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+
+.reception-description {
+  margin: 0 0 20px;
+  color: #687386;
+  font-size: 14px;
+}
+
+.reception-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.reception-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.reception-field label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.reception-field input,
+.reception-field select,
+.reception-search,
+.reception-status-select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #dce0e8;
+  border-radius: 8px;
+  outline: none;
+  background: #fff;
+  font-size: 14px;
+}
+
+.reception-field input:focus,
+.reception-field select:focus,
+.reception-search:focus {
+  border-color: #6654c8;
+}
+
+.reception-form-actions {
+  grid-column: 1 / -1;
+}
+
+.reception-primary-button {
+  padding: 11px 17px;
+  border: none;
+  border-radius: 8px;
+  background: #6654c8;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.reception-list-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 18px;
+}
+
+.reception-list-heading p {
+  margin: 0;
+  color: #687386;
+  font-size: 14px;
+}
+
+.reception-search {
+  max-width: 300px;
+}
+
+.reception-table-wrapper {
+  overflow-x: auto;
+}
+
+.reception-table {
+  width: 100%;
+  min-width: 1050px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.reception-table th,
+.reception-table td {
+  padding: 14px 11px;
+  border-bottom: 1px solid #edf0f4;
+  font-size: 13px;
+}
+
+.reception-table th {
+  color: #687386;
+  background: #f8f9fc;
+  font-weight: 600;
+}
+
+.reception-type,
+.reception-status {
+  display: inline-block;
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.reception-type.regular {
+  color: #5544b2;
+  background: #e9e7ff;
+}
+
+.reception-type.walk-in {
+  color: #a45b12;
+  background: #fff2df;
+}
+
+.reception-status.waiting {
+  color: #a45b12;
+  background: #fff2df;
+}
+
+.reception-status.checked-in {
+  color: #245d9c;
+  background: #e8f2ff;
+}
+
+.reception-status.in-consultation {
+  color: #18794e;
+  background: #e6f6ed;
+}
+
+.reception-status.completed {
+  color: #5544b2;
+  background: #e9e7ff;
+}
+
+.reception-status.no-show {
+  color: #bd3535;
+  background: #ffe9e9;
+}
+
+.reception-checkin-button {
+  padding: 8px 11px;
+  border: none;
+  border-radius: 6px;
+  background: #6654c8;
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.reception-status-select {
+  min-width: 130px;
+  padding: 8px;
+}
+
+.reception-empty {
+  text-align: center;
+  color: #687386;
+  padding: 25px !important;
+}
+
+@media (max-width: 1000px) {
+  .reception-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .reception-page {
+    padding: 22px 15px;
+  }
+
+  .reception-header,
+  .reception-list-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .reception-stats,
+  .reception-form {
+    grid-template-columns: 1fr;
+  }
+
+  .reception-form-actions {
+    grid-column: auto;
+  }
+
+  .reception-search {
+    max-width: none;
+  }
+}
