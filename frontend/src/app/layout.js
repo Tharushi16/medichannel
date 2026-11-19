@@ -1,5 +1,5 @@
-
 import "./globals.css";
+import Sidebar from "../components/layout/sidebar";
 
 export const metadata = {
   title: "MediChannel",
@@ -9,8 +9,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Sidebar />
+
+        <main className="mc-main-content">
+          {children}
+        </main>
+      </body>
     </html>
   );
 }
+
 

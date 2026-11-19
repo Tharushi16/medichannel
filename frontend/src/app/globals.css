@@ -5,3 +5,24 @@
 :root { color-scheme: light; }
 * { box-sizing: border-box; }
 body { margin: 0; background: #f8fafc; color: #0f172a; }
+
+
+/* MediChannel global sidebar layout */
+
+.mc-main-content {
+  margin-left: 260px;
+  min-height: 100vh;
+  width: calc(100% - 260px);
+}
+
+@media (max-width: 768px) {
+  .mc-sidebar {
+    width: 210px;
+    min-width: 210px;
+  }
+
+  .mc-main-content {
+    margin-left: 210px;
+    width: calc(100% - 210px);
+  }
+}
