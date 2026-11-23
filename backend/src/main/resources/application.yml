@@ -8,10 +8,10 @@ spring:
   datasource:
     url: ${DB_URL:jdbc:postgresql://localhost:5432/medichannel}
     username: ${DB_USERNAME:medichannel_app}
-    password: ${DB_PASSWORD:CHANGE_ME_LOCAL_ONLY}
+    password: ${DB_PASSWORD:medichannel_user}
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
     open-in-view: false
     properties:
       hibernate:
@@ -39,3 +39,8 @@ app:
     name: ${INITIAL_ADMIN_NAME:System Administrator}
     email: ${INITIAL_ADMIN_EMAIL:}
     password: ${INITIAL_ADMIN_PASSWORD:}
+  auth:
+    cookie-name: ${AUTH_COOKIE_NAME:medichannel_token}
+    secure-cookie: ${AUTH_SECURE_COOKIE:false}
+    lockout-threshold: ${AUTH_LOCKOUT_THRESHOLD:5}
+    lockout-minutes: ${AUTH_LOCKOUT_MINUTES:15}
