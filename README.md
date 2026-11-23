@@ -83,5 +83,7 @@ Create a pull request to `develop`; require at least one teammate review. Merge 
 - Do not log personal data, tokens, medical data or secrets.
 - Use fictional patient data only.
 
+The Member 1 authentication endpoints, staff account procedures and production configuration notes are documented in [docs/member-1-authentication.md](docs/member-1-authentication.md).
+
 ## Status
 This repository is an initial project scaffold. Complete the TODOs, verify all business rules and add tests before treating any feature as production-ready.
