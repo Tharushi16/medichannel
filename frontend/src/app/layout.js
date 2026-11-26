@@ -2,7 +2,7 @@ import "./globals.css";
 
 export const metadata = {
   title: "MediChannel",
-  description: "Hospital channelling and appointment system"
+  description: "Hospital channelling and appointment system",
 };
 
 export default function RootLayout({ children }) {
@@ -14,6 +14,3 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-
-
-
