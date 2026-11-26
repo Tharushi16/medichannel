@@ -1,21 +1,31 @@
-
+### Add Patient
 POST http://localhost:8080/api/auth/register
 Content-Type: application/json
 
 {
   "fullName": "Test Patient",
-  "nic": "200012345678",
-  "dateOfBirth": "2000-01-01",
+  "nic": "200212345678",
+  "dateOfBirth": "2002-01-01",
   "gender": "Male",
-  "phone": "0771234567",
-  "email": "testpatient@example.com",
+  "phone": "0775234567",
+  "email": "testpatient2@example.com",
   "address": "Colombo, Sri Lanka",
-  "password": "Test@12345"
+  "password": "Test2@12345"
 }
 
-
 ### MediChannel - Patient Login
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
 
+{
+  "email": "testpatient2@example.com",
+  "password": "Test2@12345"
+}
+
+### Get current logged-in user
+GET http://localhost:8080/api/auth/me
+
+### Failed Login Test
 POST http://localhost:8080/api/auth/login
 Content-Type: application/json
 
@@ -24,5 +34,5 @@ Content-Type: application/json
   "password": "Test@12345"
 }
 
-### Get current logged-in user
+### test
 GET http://localhost:8080/api/auth/me
