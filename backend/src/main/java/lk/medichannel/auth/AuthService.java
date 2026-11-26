@@ -179,6 +179,9 @@ public class AuthService {
  // USER LOGIN
  // ==========================================
 
+ @Transactional(
+         noRollbackFor = AuthenticationFailureException.class
+ )
  public AuthDtos.LoginResponse login(
          AuthDtos.LoginRequest request,
          HttpServletRequest http,
@@ -214,6 +217,7 @@ public class AuthService {
    throw new AuthenticationFailureException();
   }
 
+  // Reset failed attempts after successful login.
   user.setFailedLoginAttempts(0);
   user.setLockedUntil(null);
 

@@ -53,7 +53,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                         Optional.ofNullable(req.getCookies())
                                 .orElse(new Cookie[0])
                 )
-                .filter(cookie -> cookieName.equals(cookie.getName()))
+                .filter(cookie ->
+                        cookieName.equals(cookie.getName())
+                )
                 .map(Cookie::getValue)
                 .findFirst()
                 .orElse(null);
@@ -63,27 +65,45 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             try {
                 JwtService.JwtPayload payload = jwt.parse(token);
 
-                Optional<User> user = users.findById(payload.userId())
-                        .filter(User::isActive);
+                Optional<User> optionalUser =
+                        users.findById(payload.userId())
+                                .filter(User::isActive);
 
-                user.ifPresent(u -> {
-                    CurrentUser principal =
-                            new CurrentUser(u.getId(), u.getRole());
+                if (optionalUser.isPresent()) {
 
-                    UsernamePasswordAuthenticationToken authentication =
-                            new UsernamePasswordAuthenticationToken(
-                                    principal,
-                                    null,
-                                    List.of(
-                                            new SimpleGrantedAuthority(
-                                                    "ROLE_" + u.getRole().name()
-                                            )
-                                    )
-                            );
+                    User user = optionalUser.get();
 
-                    SecurityContextHolder.getContext()
-                            .setAuthentication(authentication);
-                });
+                    // Check that JWT role matches the database role.
+                    if (user.getRole() == payload.role()) {
+
+                        CurrentUser principal =
+                                new CurrentUser(
+                                        user.getId(),
+                                        user.getRole()
+                                );
+
+                        UsernamePasswordAuthenticationToken authentication =
+                                new UsernamePasswordAuthenticationToken(
+                                        principal,
+                                        null,
+                                        List.of(
+                                                new SimpleGrantedAuthority(
+                                                        "ROLE_" +
+                                                                user.getRole().name()
+                                                )
+                                        )
+                                );
+
+                        SecurityContextHolder.getContext()
+                                .setAuthentication(authentication);
+
+                    } else {
+                        SecurityContextHolder.clearContext();
+                    }
+
+                } else {
+                    SecurityContextHolder.clearContext();
+                }
 
             } catch (JwtException | IllegalArgumentException ex) {
                 SecurityContextHolder.clearContext();
